@@ -1,0 +1,518 @@
+/* Reset y configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primario: #1a73e8;
+    --color-texto: #1a1a1a;
+    --color-fondo: #ffffff;
+    --color-gris-claro: #f8f9fa;
+    --font-principal: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-principal);
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    letter-spacing: -0.5px;
+}
+
+.logo-highlight {
+    color: var(--color-primario);
+    position: relative;
+}
+
+.logo-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primario);
+    border-radius: 2px;
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--color-primario);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primario);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--color-fondo);
+    position: relative;
+    padding-top: 80px;
+    background-image: url('fotoheros.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primario), transparent);
+    z-index: 3;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: #f0f0f0;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--color-primario);
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+}
+
+.cta-button:hover {
+    background-color: #1557b0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.3);
+}
+
+/* Hero Stats */
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: -80px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 10;
+}
+
+.stat-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.stat-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    margin-bottom: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--color-texto);
+    font-weight: 500;
+}
+
+/* Secciones generales */
+.section {
+    padding: 5rem 0;
+}
+
+.section:nth-child(even) {
+    background-color: var(--color-gris-claro);
+}
+
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--color-texto);
+}
+
+.section-text {
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+}
+
+/* Problema */
+.problema {
+    background-color: var(--color-fondo);
+    padding-top: 7rem !important;
+}
+
+/* Solución */
+.solucion {
+    position: relative;
+}
+
+.solucion::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 100px;
+    background-color: var(--color-primario);
+    margin-left: 20px;
+}
+
+/* Servicios */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.servicio-card {
+    background-color: var(--color-fondo);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.servicio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-primario);
+}
+
+.servicio-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.servicio-card h3 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-texto);
+    line-height: 1.4;
+}
+
+/* Confianza */
+.puntos-confianza {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.punto {
+    font-size: 1.1rem;
+    color: var(--color-texto);
+    font-weight: 500;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Proceso */
+.proceso-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.step {
+    text-align: center;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-primario);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+}
+
+.step p {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Testimonio */
+.testimonio-card {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 3rem;
+    background-color: var(--color-fondo);
+    border-radius: 12px;
+    border-left: 4px solid var(--color-primario);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.testimonio-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.testimonio-autor {
+    font-weight: 600;
+    color: var(--color-primario);
+    text-align: right;
+}
+
+/* CTA Final */
+.cta-final {
+    background-color: var(--color-fondo);
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-texto);
+    color: white;
+    padding: 3rem 0 1.5rem;
+    text-align: center;
+}
+
+.footer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+.footer-info {
+    margin: 2rem 0;
+}
+
+.footer-info p {
+    font-size: 1.1rem;
+    color: white;
+    margin: 0.5rem 0;
+}
+
+.footer-copy {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #444;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2.5rem;
+        margin-bottom: -60px;
+    }
+
+    .problema {
+        padding-top: 5rem !important;
+    }
+
+    .stat-card {
+        padding: 1.2rem;
+    }
+
+    .stat-number {
+        font-size: 1.6rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+
+    .servicios-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.8rem;
+        overflow-x: auto;
+    }
+
+    .servicio-card {
+        min-width: 120px;
+        padding: 1rem;
+    }
+
+    .servicio-card h3 {
+        font-size: 0.8rem;
+    }
+
+    .servicio-icon {
+        font-size: 2rem;
+    }
+
+    .proceso-steps,
+    .puntos-confianza {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonio-card {
+        padding: 2rem;
+    }
+
+    .cta-button {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* Animaciones suaves */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
