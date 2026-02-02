@@ -1,31 +1,96 @@
-// Animación de entrada para elementos al hacer scroll
+// Animación de entrada para elementos al hacer scroll (bidireccional)
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
+            entry.target.classList.add('animate-visible');
+            entry.target.classList.remove('animate-hidden');
+        } else {
+            entry.target.classList.remove('animate-visible');
+            entry.target.classList.add('animate-hidden');
         }
     });
 }, observerOptions);
 
-// Observar secciones para animaciones
+// Observer para elementos con diferentes animaciones (bidireccional)
+const scrollAnimationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const animationType = entry.target.dataset.animation || 'fade-up';
+            entry.target.classList.add(animationType);
+            entry.target.classList.remove('scroll-hidden');
+        } else {
+            const animationType = entry.target.dataset.animation || 'fade-up';
+            entry.target.classList.remove(animationType);
+            entry.target.classList.add('scroll-hidden');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+// Menú hamburguesa
 document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Toggle menú
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Observar secciones para animaciones
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
+        section.classList.add('scroll-animate');
         observer.observe(section);
+    });
+    
+    // Observar elementos individuales con animaciones (excluyendo stat-card del hero)
+    const animatedElements = document.querySelectorAll('.section-title, .section-text, .step, .punto-item, .fotoelectrica-img');
+    animatedElements.forEach((el, index) => {
+        el.classList.add('scroll-hidden');
+        setTimeout(() => {
+            scrollAnimationObserver.observe(el);
+        }, index * 20);
+    });
+    
+    // Stat cards sin animaciones de scroll
+    const statCards = document.querySelectorAll('.hero .stat-card');
+    statCards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
     });
 
     // Animación inicial del hero
     const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .cta-button');
     heroElements.forEach((el, index) => {
         setTimeout(() => {
-            el.classList.add('fade-in');
-        }, index * 150);
+            el.classList.add('fade-up');
+        }, index * 200);
     });
 });
 
@@ -123,3 +188,84 @@ const heroStats = document.querySelector('.hero-stats');
 if (heroStats) {
     statsObserver.observe(heroStats);
 }
+
+// Modal de formulario de diagnóstico
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modalDiagnostico');
+    const botonesAbrir = document.querySelectorAll('.btn-abrir-modal');
+    const botonCerrar = document.querySelector('.modal-close');
+    const formulario = document.getElementById('formDiagnostico');
+
+    // Abrir modal
+    botonesAbrir.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Cerrar modal al hacer clic en el botón de cerrar
+    if (botonCerrar) {
+        botonCerrar.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Cerrar modal al hacer clic fuera del contenido
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Cerrar modal con la tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Manejar envío del formulario
+    if (formulario) {
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Obtener los datos del formulario
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                email: document.getElementById('email').value,
+                vehiculo: document.getElementById('vehiculo').value,
+                problema: document.getElementById('problema').value,
+                fecha: document.getElementById('fecha').value
+            };
+
+            // Crear mensaje para WhatsApp
+            const mensaje = `*Nueva solicitud de diagnóstico*%0A%0A` +
+                `*Nombre:* ${formData.nombre}%0A` +
+                `*Teléfono:* ${formData.telefono}%0A` +
+                `*Email:* ${formData.email || 'No proporcionado'}%0A` +
+                `*Vehículo:* ${formData.vehiculo}%0A` +
+                `*Problema:* ${formData.problema}%0A` +
+                `*Fecha preferida:* ${formData.fecha || 'No especificada'}`;
+
+            // Número de WhatsApp (reemplaza con tu número real)
+            const numeroWhatsApp = '56912345678';
+            
+            // Abrir WhatsApp con el mensaje
+            window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
+
+            // Cerrar modal y resetear formulario
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            formulario.reset();
+
+            // Mostrar mensaje de confirmación
+            alert('¡Gracias! Tu solicitud se ha enviado correctamente. Nos contactaremos contigo pronto.');
+        });
+    }
+});

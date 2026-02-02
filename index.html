@@ -12,14 +12,24 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo"><span class="logo-highlight">Bravo</span> Electrónica Automotriz</div>
-                <nav class="nav">
-                    <a href="#hero" class="nav-link">Inicio</a>
-                    <a href="#servicios" class="nav-link">Servicios</a>
-                    <a href="#confianza" class="nav-link">Nosotros</a>
-                    <a href="#proceso" class="nav-link">Proceso</a>
-                    <a href="#contacto" class="nav-link">Contacto</a>
-                </nav>
+                <div class="logo">
+                    <img src="./Imagnes/logobravo1.png" alt="Logo" style="height: 60px; vertical-align: middle;">
+                </div>
+                <div class="header-actions">
+                    <nav class="nav">
+                        <a href="#hero" class="nav-link">Inicio</a>
+                        <a href="#servicios" class="nav-link">Servicios</a>
+                        <a href="#confianza" class="nav-link">Nosotros</a>
+                        <a href="#proceso" class="nav-link">Proceso</a>
+                        <a href="#contacto" class="nav-link">Contacto</a>
+                    </nav>
+                    <button class="header-cta-button btn-abrir-modal">Agenda tu diagnóstico</button>
+                    <button class="menu-toggle" aria-label="Abrir menú">
+                        <span class="menu-icon"></span>
+                        <span class="menu-icon"></span>
+                        <span class="menu-icon"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -29,7 +39,7 @@
         <div class="container">
             <h1 class="hero-title">Electrónica automotriz confiable y profesional</h1>
             <p class="hero-subtitle">Diagnóstico y reparación eléctrica para todo tipo de vehículos</p>
-            <a href="#contacto" class="cta-button">👉 Agenda tu diagnóstico hoy</a>
+            <button class="cta-button btn-abrir-modal">👉 Agenda tu diagnóstico hoy</button>
             
             <div class="hero-stats">
                 <div class="stat-card">
@@ -53,6 +63,11 @@
         <div class="container">
             <h2 class="section-title">¿Fallas eléctricas en tu auto?</h2>
             <p class="section-text">Luces, sensores, batería o sistema electrónico defectuoso pueden dejar tu vehículo fuera de servicio y generar altos costos si no se reparan a tiempo.</p>
+                    <div class="fotos-fotoelectrica">
+                        <img src="./Imagnes/fotoelectrica 1.png" alt="Foto eléctrica 1" class="fotoelectrica-img">
+                        <img src="./Imagnes/fotoelectrica 2.png" alt="Foto eléctrica 2" class="fotoelectrica-img">
+                        <img src="./Imagnes/fotoelectrica 3.png" alt="Foto eléctrica 3" class="fotoelectrica-img">
+                    </div>
         </div>
     </section>
 
@@ -61,84 +76,103 @@
         <div class="container">
             <h2 class="section-title">En Bravo solucionamos el problema desde la raíz</h2>
             <p class="section-text">Detectamos fallas eléctricas con diagnóstico preciso y reparamos de forma segura, rápida y garantizada.</p>
+                </div>
+            </section>
+
+            <!-- Proceso de trabajo -->
+            <section id="proceso" class="section proceso">
+                <div class="container">
+                    <h2 class="section-title">Así trabajamos</h2>
+                    <div class="proceso-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <p>Revisamos y diagnosticamos el problema</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <p>Te explicamos la falla y el costo</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <p>Reparamos con garantía</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <p>Entregamos tu vehículo listo y seguro</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
 
-    <!-- Servicios -->
-    <section id="servicios" class="section servicios">
-        <div class="container">
-            <h2 class="section-title">Nuestros servicios</h2>
-            <div class="servicios-grid">
-                <div class="servicio-card">
-                    <div class="servicio-icon">⚡</div>
-                    <h3>Diagnóstico electrónico computarizado</h3>
-                </div>
-                <div class="servicio-card">
-                    <div class="servicio-icon">🔧</div>
-                    <h3>Reparaciones eléctricas generales</h3>
-                </div>
-                <div class="servicio-card">
-                    <div class="servicio-icon">🔋</div>
-                    <h3>Sistemas de arranque y carga</h3>
-                </div>
-                <div class="servicio-card">
-                    <div class="servicio-icon">💡</div>
-                    <h3>Luces, sensores y módulos electrónicos</h3>
-                </div>
-                <div class="servicio-card">
-                    <div class="servicio-icon">🔍</div>
-                    <h3>Corrección de fallas eléctricas complejas</h3>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Por qué elegir Bravo -->
     <section id="confianza" class="section confianza">
         <div class="container">
-            <h2 class="section-title">¿Por qué elegir Bravo Electrónica Automotriz?</h2>
+            <h2 class="section-title">¿Por qué elegir Electrónica Automotriz Bravo?</h2>
             <p class="section-text">Trabajamos con experiencia, herramientas profesionales y un enfoque honesto para que tu auto quede en perfectas condiciones.</p>
             <div class="puntos-confianza">
-                <div class="punto">✔ Técnicos especializados</div>
-                <div class="punto">✔ Diagnóstico preciso</div>
-                <div class="punto">✔ Reparaciones garantizadas</div>
-                <div class="punto">✔ Atención clara y transparente</div>
+                <div class="puntos-grid">
+                    <div class="punto-item"> Técnicos especializados</div>
+                    <div class="punto-item"> Diagnóstico preciso</div>
+                    <div class="punto-item"> Reparaciones garantizadas</div>
+                    <div class="punto-item"> Atención clara y transparente</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Proceso de trabajo -->
-    <section id="proceso" class="section proceso">
-        <div class="container">
-            <h2 class="section-title">Así trabajamos</h2>
-            <div class="proceso-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <p>Revisamos y diagnosticamos el problema</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <p>Te explicamos la falla y el costo</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <p>Reparamos con garantía</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <p>Entregamos tu vehículo listo y seguro</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Testimonio -->
     <section id="testimonio" class="section testimonio">
         <div class="container">
             <h2 class="section-title">Clientes que confían en nosotros</h2>
-            <div class="testimonio-card">
-                <p class="testimonio-text">"Excelente servicio, solucionaron una falla eléctrica que otros talleres no pudieron detectar."</p>
-                <div class="testimonio-autor">— Cliente satisfecho</div>
+            <div class="clientes-carrusel">
+                <div class="clientes-carrusel-inner">
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"Excelente servicio, solucionaron una falla eléctrica que otros talleres no pudieron detectar."</p>
+                        <div class="testimonio-autor">— Juan P.</div>
+                    </div>
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"Muy profesionales y rápidos, mi auto quedó perfecto."</p>
+                        <div class="testimonio-autor">— María G.</div>
+                    </div>
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"Recomiendo totalmente, atención clara y honesta."</p>
+                        <div class="testimonio-autor">— Carlos S.</div>
+                    </div>
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"Detectaron el problema en minutos y lo solucionaron el mismo día."</p>
+                        <div class="testimonio-autor">— Fernanda L.</div>
+                    </div>
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"La mejor garantía y seguimiento post-reparación."</p>
+                        <div class="testimonio-autor">— Rodrigo M.</div>
+                    </div>
+                    <!-- Duplicado para bucle infinito visual -->
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"Excelente servicio, solucionaron una falla eléctrica que otros talleres no pudieron detectar."</p>
+                        <div class="testimonio-autor">— Juan P.</div>
+                    </div>
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"Muy profesionales y rápidos, mi auto quedó perfecto."</p>
+                        <div class="testimonio-autor">— María G.</div>
+                    </div>
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"Recomiendo totalmente, atención clara y honesta."</p>
+                        <div class="testimonio-autor">— Carlos S.</div>
+                    </div>
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"Detectaron el problema en minutos y lo solucionaron el mismo día."</p>
+                        <div class="testimonio-autor">— Fernanda L.</div>
+                    </div>
+                    <div class="cliente-card">
+                        <p class="testimonio-text">"La mejor garantía y seguimiento post-reparación."</p>
+                        <div class="testimonio-autor">— Rodrigo M.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -155,15 +189,58 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <h3>Bravo Electrónica Automotriz</h3>
+            <h3>Electrónica Automotriz Bravo</h3>
             <p>Reparaciones eléctricas automotrices</p>
             <div class="footer-info">
                 <p>📍 Dirección del taller</p>
                 <p>📞 +56 9 1234 5678</p>
             </div>
-            <p class="footer-copy">&copy; 2026 Bravo Electrónica Automotriz. Todos los derechos reservados.</p>
+            <p class="footer-copy">&copy; 2026 Electrónica Automotriz Bravo. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Modal Formulario de Diagnóstico -->
+    <div id="modalDiagnostico" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+            <h2 class="modal-title">Agenda tu diagnóstico</h2>
+            <p class="modal-subtitle">Completa el formulario y nos contactaremos contigo pronto</p>
+            
+            <form id="formDiagnostico" class="diagnostico-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo *</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +56 9 1234 5678">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="Ej: ejemplo@correo.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="vehiculo">Marca y modelo del vehículo *</label>
+                    <input type="text" id="vehiculo" name="vehiculo" required placeholder="Ej: Toyota Corolla 2015">
+                </div>
+                
+                <div class="form-group">
+                    <label for="problema">Describe el problema *</label>
+                    <textarea id="problema" name="problema" rows="4" required placeholder="Ej: El auto no enciende, problema con las luces..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha">Fecha preferida para diagnóstico</label>
+                    <input type="date" id="fecha" name="fecha">
+                </div>
+                
+                <button type="submit" class="form-submit-btn">Enviar solicitud</button>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
