@@ -1,36 +1,3 @@
-// Animación de entrada para elementos al hacer scroll (bidireccional)
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -80px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate-visible');
-            entry.target.classList.remove('animate-hidden');
-        } else {
-            entry.target.classList.remove('animate-visible');
-            entry.target.classList.add('animate-hidden');
-        }
-    });
-}, observerOptions);
-
-// Observer para elementos con diferentes animaciones (bidireccional)
-const scrollAnimationObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const animationType = entry.target.dataset.animation || 'fade-up';
-            entry.target.classList.add(animationType);
-            entry.target.classList.remove('scroll-hidden');
-        } else {
-            const animationType = entry.target.dataset.animation || 'fade-up';
-            entry.target.classList.remove(animationType);
-            entry.target.classList.add('scroll-hidden');
-        }
-    });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
 // Menú hamburguesa
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
@@ -60,37 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.classList.remove('active');
             document.body.style.overflow = '';
         }
-    });
-
-    // Observar secciones para animaciones
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        section.classList.add('scroll-animate');
-        observer.observe(section);
-    });
-    
-    // Observar elementos individuales con animaciones (excluyendo stat-card del hero)
-    const animatedElements = document.querySelectorAll('.section-title, .section-text, .step, .punto-item, .fotoelectrica-img');
-    animatedElements.forEach((el, index) => {
-        el.classList.add('scroll-hidden');
-        setTimeout(() => {
-            scrollAnimationObserver.observe(el);
-        }, index * 20);
-    });
-    
-    // Stat cards sin animaciones de scroll
-    const statCards = document.querySelectorAll('.hero .stat-card');
-    statCards.forEach(card => {
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-    });
-
-    // Animación inicial del hero
-    const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .cta-button');
-    heroElements.forEach((el, index) => {
-        setTimeout(() => {
-            el.classList.add('fade-up');
-        }, index * 200);
     });
 });
 
